@@ -21,4 +21,11 @@ class AuthController extends Controller
         }
         return redirect('login')->withErrors('wrong credential');
     }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('login');
+    }
 }

@@ -74,7 +74,15 @@ class TrackController extends Controller
 
     public function update(TrackRequest $request, Track $track)
     {
-        $track->update($request->validated());
+        $track->update([
+            'name' => $request->name,
+            'path' => $request->path,
+            'genre_id' => $request->genre_id,
+            'album_id' => $request->album_id,
+            'artist_id' => $request->artist_id
+        ]);
+
+        $track->save();
         return redirect()->route('tracks.index')->with('success','Track updated successfully');
 
 //        return new TrackResource($track);

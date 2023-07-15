@@ -31,7 +31,17 @@
                 <li class="nav-item {{ Request::is('albums') ? 'active' : '' }}">
                     <a class="nav-link" href="/albums">Albums</a>
                 </li>
+            </ul>
 
+            <ul class="navbar-nav ml-auto">
+                @auth
+                    <li class="nav-item">
+                        <form action="{{ url('logout') }}" method="POST">
+                            @csrf
+                            <button class="btn btn-link nav-link" type="submit">Logout</button>
+                        </form>
+                    </li>
+                @endauth
             </ul>
         </div>
     </nav>
