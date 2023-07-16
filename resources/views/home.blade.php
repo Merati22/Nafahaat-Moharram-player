@@ -71,10 +71,13 @@
             </div>
             <div class="progress__time">@{{ currentTime }}</div>
         </div>
-        <div v-cloak></div>
     </div>
 
+    <div class="label" v-cloak>
+        <span class="label-value">{{ $tracks[0]->album->name }}،  {{ count($tracks) }} قطعه منتخب شده</span>
+    </div>
 </div>
+
 
 <svg xmlns="http://www.w3.org/2000/svg" hidden xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>

@@ -47,6 +47,16 @@ body {
     /*fill: #03A9F4;*/
     /*stroke: #03A9F4;*/
 
+.label {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.label-value {
+    font-size: 16px;
+    font-weight: bold;
+    color: #d2d1d1;
+}
 
 .wrapper {
   width: 100%;
@@ -55,6 +65,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   background-size: cover;
+  flex-direction: column;
 }
 @media screen and (max-width: 700px), (max-height: 500px) {
   .wrapper {
