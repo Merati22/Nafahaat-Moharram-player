@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('artists', ArtistController::class);
     Route::resource('albums', AlbumController::class);
+    Route::get('albums/{album}/set-to-play', [AlbumController::class, 'setToPlay'])->name('setToPlay');
     Route::resource('genres', GenreController::class);
     Route::resource('tracks', TrackController::class);
 });

@@ -58,4 +58,21 @@ class AlbumController extends Controller
 
 //        return response()->noContent();
     }
+
+    public function setToPlay(Album $album)
+    {
+        if ($lastPlayingAlbum = Album::where('is_playing', 1)->first() ) {
+
+            $lastPlayingAlbum->is_playing = 0;
+            $lastPlayingAlbum->save();
+
+        }
+
+        $album->is_playing = 1;
+        $album->save();
+
+        return redirect()->route('albums.index')->with('success','Album Playing updated successfully');
+
+
+    }
 }

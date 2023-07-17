@@ -77,12 +77,17 @@ class TrackController extends Controller
         $track->update([
             'name' => $request->name,
             'path' => $request->path,
-            'genre_id' => $request->genre_id,
-            'album_id' => $request->album_id,
-            'artist_id' => $request->artist_id
         ]);
 
+        $artist = Artist::find($request->artist_id);
+        $album = Album::find($request->album_id);
+        $genre = genre::find($request->genre_id);
+
+        $track->artist()->associate($artist);
+        $track->genre()->associate($genre);
+        $track->album()->associate($album);
         $track->save();
+
         return redirect()->route('tracks.index')->with('success','Track updated successfully');
 
 //        return new TrackResource($track);

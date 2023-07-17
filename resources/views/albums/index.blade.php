@@ -20,6 +20,7 @@
             <th>No</th>
             <th>Id</th>
             <th>Name</th>
+            <th>Playing?</th>
             <th>Action</th>
         </tr>
         @foreach ($albums as $album)
@@ -27,13 +28,17 @@
                 <td>{{ ++$i }}</td>
                 <td>{{ $album->id }}</td>
                 <td>{{ $album->name }}</td>
-                <td><form action="{{ route('albums.destroy',$album->id) }}" method="POST">
+                <td>{{ $album->is_playing }}</td>
+                <td>
+                    <form action="{{ route('albums.destroy',$album->id) }}" method="POST">
                         <a class="btn btn-info" href="{{ route('albums.show',$album->id) }}">Show</a>
                         <a class="btn btn-primary" href="{{ route('albums.edit',$album->id) }}">Edit</a>
+                        <a class="btn btn-warning" href="{{ route('setToPlay',$album->id) }}">Set To Play</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" onclick="return confirm('Do you really want to delete album!')" class="btn btn-danger">Delete</button>
-                    </form></td>
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table>
