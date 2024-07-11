@@ -68,7 +68,8 @@ class DatabaseSeeder extends Seeder
         $albums = [
             [
                 'id' => 1,
-                'name' => "محرم ۱۴۰۲"
+                'name' => "محرم ۱۴۰۲",
+                'is_playing' => 1
             ]
         ];
 

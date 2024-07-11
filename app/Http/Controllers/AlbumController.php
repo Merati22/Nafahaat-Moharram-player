@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AlbumRequest;
+use App\Http\Requests\TrackRequest;
 use App\Http\Resources\AlbumResource;
 use App\Models\Album;
 use App\Models\Artist;
+use App\Models\genre;
+use App\Models\Track;
 use Illuminate\Http\Request;
 
 class AlbumController extends Controller
@@ -73,6 +76,46 @@ class AlbumController extends Controller
 
         return redirect()->route('albums.index')->with('success','Album Playing updated successfully');
 
+
+    }
+
+    public function albumTrack(Album $album)
+    {
+        $tracks = $album->tracks()->orderBy('priority', 'asc')->with('artist', 'genre', 'album')->paginate(50);
+
+        return view('albums.tracks.index',compact('tracks', 'album'))->with('i', (request()->input('page', 1) - 1) * 5);
+
+    }
+
+
+    public function albumTrackEdit(Album $album, Track $track)
+    {
+        $artists = Artist::all();
+        $albums = Album::all();
+        $genres = genre::all();
+
+        return view('albums.tracks.edit', compact('track', 'artists', 'albums', 'album', 'genres'));
+
+    }
+
+    public function albumTrackUpdate(TrackRequest $request, Album $album, Track $track)
+    {
+        $track->update([
+            'name' => $request->name,
+            'path' => $request->path,
+            'priority' => $request->priority,
+        ]);
+
+        $artist = Artist::find($request->artist_id);
+        $album1 = Album::find($request->album_id);
+        $genre = genre::find($request->genre_id);
+
+        $track->artist()->associate($artist);
+        $track->genre()->associate($genre);
+        $track->album()->associate($album1);
+        $track->save();
+
+        return redirect()->route('albumTrack', $album->id)->with('success','Track updated successfully');
 
     }
 }

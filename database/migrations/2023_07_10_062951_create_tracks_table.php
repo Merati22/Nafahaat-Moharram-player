@@ -19,6 +19,7 @@ class CreateTracksTable extends Migration
             $table->integer('artist_id')->nullable();
             $table->integer('album_id')->nullable();
             $table->integer('genre_id')->nullable();
+            $table->integer('priority')->nullable();
             $table->string('path');
             $table->timestamps();
         });

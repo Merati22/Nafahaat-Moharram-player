@@ -27,6 +27,7 @@ class TrackRequest extends FormRequest
 
             "name" => "required",
             "path" => "required",
+            "priority" => "required",
             "artist_id" => "required",
             "album_id" => "required",
             "genre_id" => "required"

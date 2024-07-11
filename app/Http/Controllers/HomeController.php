@@ -24,7 +24,7 @@ class HomeController extends Controller
 //        return ($arrayOfArrays);
 
         $album = Album::where('is_playing', 1)->first();
-        $tracks = $album->tracks()->with('artist', 'genre', 'album')->get();
+        $tracks = $album->tracks()->with('artist', 'genre', 'album')->orderBy('priority', 'asc')->get();
 
         foreach ($tracks as $track) {
             $track->favorited = false;

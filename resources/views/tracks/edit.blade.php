@@ -70,6 +70,12 @@
                 </div>
             </div>
 
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Track Priority play:</strong>
+                    <input type="text" name="priority" value="{{ $track->priority }}"class="form-control" placeholder="Track Priority play">
+                </div>
+            </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">

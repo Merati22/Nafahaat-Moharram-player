@@ -12,6 +12,8 @@
         rel="stylesheet"
         href="https://meyerweb.com/eric/tools/css/reset/reset.css"
     />
+    <link rel="icon" href="{{ asset('../favicon.ico') }}">
+
     <link rel="stylesheet" href="../css/main.css" />
     <title>Sound Nafahat</title>
 </head>

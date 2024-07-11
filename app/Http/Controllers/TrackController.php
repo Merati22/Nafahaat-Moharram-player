@@ -14,7 +14,7 @@ class TrackController extends Controller
 {
     public function index()
     {
-        $tracks = Track::latest()->paginate(10);
+        $tracks = Track::latest()->paginate(100);
         return view('tracks.index',compact('tracks'))->with('i', (request()->input('page', 1) - 1) * 5);
 
 //        return TrackResource::collection($tracks);
@@ -37,8 +37,10 @@ class TrackController extends Controller
 
         $track = Track::create([
             'name' => $request->name,
-            'path' => $request->path
-            ]);
+            'path' => $request->path,
+            'priority' => $request->priority,
+
+        ]);
 
         $artist = Artist::find($request->artist_id);
         $album = Album::find($request->album_id);
@@ -77,6 +79,7 @@ class TrackController extends Controller
         $track->update([
             'name' => $request->name,
             'path' => $request->path,
+            'priority' => $request->priority,
         ]);
 
         $artist = Artist::find($request->artist_id);

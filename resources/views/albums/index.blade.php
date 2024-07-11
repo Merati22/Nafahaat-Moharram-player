@@ -31,7 +31,7 @@
                 <td>{{ $album->is_playing }}</td>
                 <td>
                     <form action="{{ route('albums.destroy',$album->id) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('albums.show',$album->id) }}">Show</a>
+                        <a class="btn btn-info" href="{{ route('albumTrack',$album->id) }}">Show Tracks</a>
                         <a class="btn btn-primary" href="{{ route('albums.edit',$album->id) }}">Edit</a>
                         <a class="btn btn-warning" href="{{ route('setToPlay',$album->id) }}">Set To Play</a>
                         @csrf

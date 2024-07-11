@@ -26,6 +26,7 @@ class Track extends Model
 
     protected $fillable = [
         'name',
-        'path'
+        'path',
+        'priority'
     ];
 }

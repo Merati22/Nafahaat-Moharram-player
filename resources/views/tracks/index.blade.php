@@ -23,6 +23,7 @@
             <th>Artist</th>
             <th>Genre</th>
             <th>Album</th>
+            <th>Priority</th>
             <th>Path</th>
         </tr>
         @foreach ($tracks as $track)
@@ -33,6 +34,7 @@
                 <td>{{ $track->artist->name }}</td>
                 <td>{{ $track->genre->name }}</td>
                 <td>{{ $track->album->name }}</td>
+                <td>{{ $track->priority }}</td>
                 <td>
                     <a href= "{{ url("$track->path") }}"> {{$track->path}}</a>
                 </td>
