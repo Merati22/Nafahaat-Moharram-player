@@ -5,6 +5,7 @@ use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TrackController;
+use App\Http\Controllers\VisitorLogController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('albums/{album}/tracks/{track}', [AlbumController::class, 'albumTrackUpdate'])->name('albumTrackUpdate');
     Route::resource('genres', GenreController::class);
     Route::resource('tracks', TrackController::class);
+    Route::get('visitors', [VisitorLogController::class, 'index']);
+
 });
 
 

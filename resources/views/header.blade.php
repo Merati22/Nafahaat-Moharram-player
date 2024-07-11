@@ -31,6 +31,12 @@
                 <li class="nav-item {{ Request::is('albums') ? 'active' : '' }}">
                     <a class="nav-link" href="/albums">Albums</a>
                 </li>
+                <li class="nav-item {{ Request::is('log') ? 'active' : '' }}">
+                    <a class="nav-link" href="/log-viewer">Log</a>
+                </li>
+                <li class="nav-item {{ Request::is('visitors') ? 'active' : '' }}">
+                    <a class="nav-link" href="/visitors">Visitors</a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ml-auto">
