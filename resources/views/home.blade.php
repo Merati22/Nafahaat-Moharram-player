@@ -14,7 +14,7 @@
     />
     <link rel="icon" href="{{ asset('../favicon.ico') }}">
 
-    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
     <title>Sound Nafahat</title>
 </head>
 <body>
