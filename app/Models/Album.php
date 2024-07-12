@@ -14,5 +14,5 @@ class Album extends Model
         return $this->hasMany(Track::class);
     }
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'is_playing'];
 }

@@ -28,7 +28,10 @@ class AlbumController extends Controller
 
     public function store(AlbumRequest $request)
     {
-        Album::create($request->validated());
+        $data = $request->validated();
+        $data['is_playing'] = 0;
+
+        Album::create($data);
         return redirect()->route('albums.index')->with('success','Album created successfully.');
 
 //        return new AlbumResource($album);
