@@ -26,9 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        LogViewer::auth(function () {
-            return Auth::check();
-        });
+//        LogViewer::auth(function () {
+//            return Auth::check();
+//        });
         JsonResource::withoutWrapping();
 
     }
