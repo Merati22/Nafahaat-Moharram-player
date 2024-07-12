@@ -31,9 +31,9 @@
                 <td>{{ ++$i }}</td>
                 <td>{{ $track->id }}</td>
                 <td>{{ $track->name }}</td>
-                <td>{{ $track->artist->name }}</td>
-                <td>{{ $track->genre->name }}</td>
-                <td>{{ $track->album->name }}</td>
+                <td>{{ $track->artist->name ?? "Deleted" }}</td>
+                <td>{{ $track->genre->name ?? "Deleted"}}</td>
+                <td>{{ $track->album->name ?? "Deleted" }}</td>
                 <td>{{ $track->priority }}</td>
                 <td>
                     <a href= "{{ url("$track->path") }}"> {{$track->path}}</a>
