@@ -36,6 +36,7 @@
             <th>City</th>
             <th>Address</th>
             <th>Post Code</th>
+            <th>Actions</th> <!-- Add this line -->
         </tr>
         @foreach ($participants as $participant)
             <tr>
@@ -47,6 +48,13 @@
                 <td>{{ $participant->city }}</td>
                 <td>{{ $participant->address }}</td>
                 <td>{{ $participant->post_code }}</td>
+                <td>
+                    <form action="{{ route('participants.destroy', $participant->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table>

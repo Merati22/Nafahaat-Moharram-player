@@ -10,21 +10,16 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ParticipantController extends Controller
 {
-
     public function index()
     {
-        // Fetch participants and paginate if necessary
-        $participants = Participant::paginate(100); // Adjust pagination as needed
-
+        $participants = Participant::paginate(100);
         return view('participant.index', compact('participants'));
     }
 
     public function create()
     {
-
         return view('participant.create');
     }
-
 
     public function store(Request $request)
     {
@@ -38,21 +33,26 @@ class ParticipantController extends Controller
         ]);
 
         if (Participant::where('phone_number', $request->phone_number)->exists()) {
-            // Flash an error message to the session
             session()->flash('error', 'این شماره تلفن قبلاً ثبت شده است.');
-
-            // Redirect back to the form with the old input
             return view('participant.create');
         }
 
         Participant::create($request->all());
         session()->flash('success', 'ثبت نام با موفقیت انجام شد!');
-
         return view('participant.create');
     }
 
     public function export()
     {
         return Excel::download(new ParticipantsExport, 'participants.xlsx');
+    }
+
+    public function destroy($id)
+    {
+        $participant = Participant::findOrFail($id);
+        $participant->delete();
+
+        session()->flash('success', 'Participant deleted successfully.');
+        return redirect()->route('participants.index');
     }
 }
