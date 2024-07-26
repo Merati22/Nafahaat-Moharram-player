@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function login(AuthRequest $request)
     {
         if (Auth::attempt(['username' => $request->input('username'), 'password' => $request->input('password'), 'role' => 'admin'])) {
-            return redirect('tracks');
+            return redirect()->intended('/');
         }
         return redirect('login')->withErrors('wrong credential');
     }

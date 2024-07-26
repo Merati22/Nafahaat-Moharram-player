@@ -4,6 +4,7 @@ use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\TrackController;
 use App\Http\Controllers\VisitorLogController;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 
+Route::get('/register', [ParticipantController::class, 'create']);
+Route::post('/register', [ParticipantController::class, 'store']);
+
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('artists', ArtistController::class);
@@ -34,6 +39,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('genres', GenreController::class);
     Route::resource('tracks', TrackController::class);
     Route::get('visitors', [VisitorLogController::class, 'index']);
+    Route::get('participants', [ParticipantController::class, 'index']);
+    Route::get('participants/export', [ParticipantController::class, 'export'])->name('participants.export');
+
 
 });
 

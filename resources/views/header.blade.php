@@ -37,6 +37,9 @@
                 <li class="nav-item {{ Request::is('visitors') ? 'active' : '' }}">
                     <a class="nav-link" href="/visitors">Visitors</a>
                 </li>
+                <li class="nav-item {{ Request::is('participants') ? 'active' : '' }}">
+                    <a class="nav-link" href="/participants">Participants</a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ml-auto">
