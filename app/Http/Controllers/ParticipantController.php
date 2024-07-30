@@ -42,6 +42,12 @@ class ParticipantController extends Controller
         return view('participant.create');
     }
 
+    public function show($id)
+    {
+        return "hello";
+    }
+
+
     public function export()
     {
         return Excel::download(new ParticipantsExport, 'participants.xlsx');

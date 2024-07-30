@@ -39,10 +39,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('genres', GenreController::class);
     Route::resource('tracks', TrackController::class);
     Route::get('visitors', [VisitorLogController::class, 'index']);
-    Route::resource('participants', ParticipantController::class);
     Route::get('participants/export', [ParticipantController::class, 'export'])->name('participants.export');
+    Route::resource('participants', ParticipantController::class);
 
 });
+
 
 
 
