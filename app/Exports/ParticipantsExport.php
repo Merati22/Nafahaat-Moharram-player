@@ -14,7 +14,7 @@ class ParticipantsExport implements FromCollection, WithHeadings
      */
     public function collection()
     {
-        return Participant::inRandomOrder()->take(50)->get([
+        return Participant::inRandomOrder()->take(100)->get([
             'id', 'full_name', 'phone_number', 'province', 'city', 'address', 'post_code'
         ]);
     }
